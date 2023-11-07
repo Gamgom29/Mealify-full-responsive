@@ -39,6 +39,7 @@
 body {
   font-family: var(--font-default);
   color: var(--color-default);
+  overflow: hidden;
 }
 a,
 span {
@@ -103,22 +104,25 @@ body:has(#contact:target) li a[href="#contact"]::before {
   width: 6px;
 }
 
-#nav-bar .content ul {
+#nav-bar .content .links {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+#nav-bar .content .links .c-icon {
+  display: none;
+}
 #nav-bar .content li {
   padding: 15px;
 }
-#nav-bar .content li a {
+#nav-bar .content .links a {
   position: relative;
   font-size: 17px;
   font-weight: 500;
   color: var(--color-tertiary);
   transition: all var(--animation-duration);
 }
-#nav-bar .content a::before {
+#nav-bar .content .links a::before {
   content: "";
   bottom: -8px;
   left: 0;
@@ -128,7 +132,7 @@ body:has(#contact:target) li a[href="#contact"]::before {
   background-color: var(--color-primary);
   transition: width var(--animation-duration);
 }
-#nav-bar .content a:hover {
+#nav-bar .content .links a:hover {
   color: #000;
 }
 #nav-bar .content a:hover::before {
@@ -144,6 +148,19 @@ body:has(#contact:target) li a[href="#contact"]::before {
 }
 #nav-bar .light {
   display: none;
+}
+#nav-bar .links:target {
+  transform: rotateX(0);
+}
+#nav-bar:has(.links:target) {
+  height: 100%;
+  background-color: #ffffff56;
+}
+#nav-bar .men-icon {
+  display: none;
+  color: var(--color-default);
+  cursor: pointer;
+  font-size: 25px;
 }
 /* ===================== Home ============= */
 #home {
@@ -661,6 +678,32 @@ body:has(#contact:target) li a[href="#contact"]::before {
 }
 
 @media (max-width: 1199.98px) {
+  #nav-bar .content .links {
+    transform: translateX(100%);
+    position: absolute;
+    z-index: 99;
+    width: 200px;
+    height: 100%;
+    background-color: #ffffff;
+    right: 0;
+    top: 0;
+    flex-direction: column;
+    transition: all var(--animation-duration);
+  }
+  #nav-bar .content .links .icon {
+    display: block;
+    padding: 10px;
+  }
+  #nav-bar .content .links a {
+    width: 100%;
+    padding: 5px 10px;
+  }
+  #nav-bar .men-icon {
+    display: block;
+  }
+  #nav-bar .theme {
+    margin-left: auto;
+  }
   .container {
     max-width: 900px;
   }
