@@ -39,7 +39,6 @@
 body {
   font-family: var(--font-default);
   color: var(--color-default);
-  overflow: hidden;
 }
 a,
 span {
@@ -109,9 +108,7 @@ body:has(#contact:target) li a[href="#contact"]::before {
   align-items: center;
   justify-content: space-between;
 }
-#nav-bar .content .links .c-icon {
-  display: none;
-}
+
 #nav-bar .content li {
   padding: 15px;
 }
@@ -149,12 +146,16 @@ body:has(#contact:target) li a[href="#contact"]::before {
 #nav-bar .light {
   display: none;
 }
-#nav-bar .links:target {
-  transform: rotateX(0);
+#nav-bar .content .links .c-icon {
+  display: none;
 }
+
 #nav-bar:has(.links:target) {
   height: 100%;
   background-color: #ffffff56;
+}
+#nav-bar #links:target {
+  transform: translateX(0);
 }
 #nav-bar .men-icon {
   display: none;
@@ -682,21 +683,27 @@ body:has(#contact:target) li a[href="#contact"]::before {
     transform: translateX(100%);
     position: absolute;
     z-index: 99;
-    width: 200px;
+    width: 350px;
     height: 100%;
     background-color: #ffffff;
     right: 0;
     top: 0;
     flex-direction: column;
+    padding: 20px;
+    justify-content: flex-start;
     transition: all var(--animation-duration);
   }
   #nav-bar .content .links .icon {
     display: block;
     padding: 10px;
   }
-  #nav-bar .content .links a {
+  #nav-bar .content li {
     width: 100%;
-    padding: 5px 10px;
+    padding: 20px;
+  }
+  #nav-bar .content .links .c-icon {
+    display: block;
+    align-self: flex-end;
   }
   #nav-bar .men-icon {
     display: block;
